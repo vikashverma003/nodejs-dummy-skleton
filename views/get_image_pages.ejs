@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Image Uploading</title>
+</head>
+ 
+<body>  
+  <div class="container">
+        <div class="row">
+            <h1>Images Lists</h1> <a href="/image_upload">Add Images</a>
+            <br> <br> <br>
+         <table class="table table-striped table-primary">
+          <thead>
+            <tr>
+              <th> Name</th>
+              <th> Description</th>
+              <th> Image</th>
+
+              <th> Action</th>
+            </tr>
+          </thead>
+          <tbody>
+           <% if(records.length >0){
+            records.forEach(function(row){
+            %>
+            <tr>
+              <td><%= row.name %></td>
+              <td><%= row.desc %> pp.. </td>
+
+          <% var d=JSON.parse(row.img); 
+              d.forEach(function(data){ %>
+
+              <td><img src='./uploads/<%= data %>' style="width:80px; height:80px"></td>
+                <% }) %>
+         
+            
+                   
+              <td>
+                <td><a class="btn btn-primary btn-xs" href="/edit_image_pages/<%= row._id %>"><i class="fa fa-edit"></i>Edit</a>
+
+                <a class="btn btn-danger btn-xs" href="/delete_image_pages/<%= row._id %>"><i class="fa fa-trash"></i>Delete</a>
+              </td>
+            </tr>
+            <%  }) } %>
+          </tbody>
+        </table>
+        <% if (pages > 0) { %>
+          <ul class="pagination text-center">
+              <% if (current == 1) { %>
+                  <li class="disabled"><a>First</a></li>
+              <% } else { %>
+                  <li><a href="/fetch_image_upload/1">First</a></li>
+              <% } %>
+              <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+              <% if (i !== 1) { %>
+                  <li class="disabled"><a>...</a></li>
+              <% } %>
+              <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                  <% if (i == current) { %>
+                      <li class="active"><a><%= i %></a></li>
+                  <% } else { %>
+                      <li><a href="/fetch_image_upload/<%= i %>"><%= i %></a></li>
+                  <% } %>
+                  <% if (i == Number(current) + 4 && i < pages) { %>
+                      <li class="disabled"><a>...</a></li>
+                  <% } %>
+              <% } %>
+              <% if (current == pages) { %>
+                  <li class="disabled"><a>Last</a></li>
+              <% } else { %>
+                  <li><a href="/fetch_image_upload/<%= pages %>">Last</a></li>
+              <% } %>
+          </ul>
+      <% } %>
+      </div>
+    </div>
+
+    </body></html>

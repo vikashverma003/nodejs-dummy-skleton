@@ -1,0 +1,567 @@
+// for running the mongo server just enter the mongo in the cmd
+
+
+
+
+Operators in nodejs
+comparision operar, logical Operators
+//////////////////
+
+https://webscript.info/rizwan/mern-stack-project-ecommerce-website-source-code-5f59262dd2124
+/*********************************************/
+https://github.com/auth0/node-jsonwebtoken
+
+/*****************************************************/
+https://www.tutorialswebsite.com/how-to-create-pagination-with-node-js-mongodb-express-and-ejs-step-by-step/
+/*****************************************************/
+parse
+Data parsing is a method where one string of data gets converted into a different type of data. So let's say you 
+receive your data in raw HTML, a parser
+will take the said HTML and transform it into a more readable data format that can be easily read and understood.
+
+
+e.g
+resolve (a sentence) into its component parts and describe their syntactic roles., in more readble or undertandable form.
+"I asked a couple of students to parse these sentences for me"
+
+
+/*****************************************************/
+array.slice(start, end)
+slice() selects the elements starting at the given start argument, and ends at, but does not include, 
+the given end argument.
+slice() does not change the original array.
+<script>
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruits.slice(1, 3);
+document.getElementById("demo").innerHTML = citrus;
+</script>
+
+o.p= == Orange,Lemon
+
+let records = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+];
+let pageSize = 5;
+
+function paginate(page = 1) {
+    //when page is 1, we go from index 0 to index 4 
+    //that's the first 5 records.
+    return records.slice(pageSize * (page - 1), pageSize * page);
+}
+
+console.log(paginate(1));
+console.log(paginate(2));
+console.log(paginate(3));
+
+/****************************************************/
+The Math. ceil() function always rounds a number up to the next largest integer. 
+Note: Math. ceil( null ) returns integer 0 and does not give a NaN error
+The ceil() method rounds a number UPWARDS to the nearest integer, and returns the result.
+ If the passed argument is an integer, 
+
+/******************************************/
+Storing the multiple images in the multiple pathss.
+And also fetch the images .
+then edit and delete from the dir also.
+Implementing the pagination in express js
+
+/****************************/
+
+https://stackoverflow.com/questions/47800245/node-pagination-with-express
+
+app.get('/api/posts', (req, res) => {
+  const pageCount = Math.ceil(posts.length / 10);
+  let page = parseInt(req.query.p);
+  if (!page) { page = 1;}
+  if (page > pageCount) {
+    page = pageCount
+  }
+  res.json({
+    "page": page,
+    "pageCount": pageCount,
+    "posts": posts.slice(page * 10 - 10, page * 10)
+  });
+});
+
+/**************************/
+
+The parseInt() function parses a string argument and returns an 
+integer of the specified radix (the base in mathematical numeral systems).
+
+2 Number.parseInt(). The Number.parseInt() method parses a string argument 
+and returns an integer of the specified radix or base.
+/**************************/
+
+2 Also add the calendar . radio button, checkbox,dropdown,textarea.
+3 Do also the edit part there.
+
+/////////////////////////////////////////////////
+https://stackoverflow.com/questions/50641754/multer-upload-different-file-types-in-different-folders
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    if (file.mimetype === 'audio/mp3') {
+      cb(null, 'songs')
+    } else if (file.mimetype === 'image/jpeg') {
+      cb(null, 'img')
+    } else {
+      console.log(file.mimetype)
+      cb({ error: 'Mime type not supported' })
+    }
+  }
+})
+var upload = multer({ storage: storage })
+
+
+
+
+/////////////////////////////////////////////
+json.Stringify()
+setInterval()
+setTimeout()
+clearInterval()
+//////////////////////////////////////////////
+
+I use path.join to ensure folder separators are in the correct places, not necessarily to ensure that it uses 
+forward versus back slashes. For example:
+
+path.join("/var/www", "test")
+Will correctly insert the separator between www and test /var/www/test
+//////////////////////////////////////////////////////////////////////////
+express.json() — Returns middleware that only parses JSON and only looks at .
+
+The json and urlencoded middleware are both part of bodyParser. This is what the README says:
+
+bodyParser([options])
+Returns middleware that parses both json and urlencoded. The options are passed to both middleware.
+
+bodyParser.json([options])
+Returns middleware that only parses json. The options are:
+
+strict - only parse objects and arrays
+limit <1mb> - maximum request body size
+reviver - passed to JSON.parse()
+bodyParser.urlencoded([options])
+Returns middleware that only parses urlencoded with the qs module
+
+2 Node.js body parsing middleware.
+
+Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
+
+3 bodyParser.json([options])
+Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type 
+option.
+This parser accepts any Unicode encoding of the body and supports automatic inflation of gzip and deflate encodings.
+
+
+///////////////////////////////////////////////
+JS The JavaScript event loop   must read.
+
+/**
+Why Node.js?
+Here’s a formal definition as given on the official Node.js website:
+
+Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.
+
+Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
+
+Node.js’ package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+We already discussed the first line of this definition: “Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.” Now let’s understand the other two lines so we can find out why Node.js is so popular.
+
+I/O refers to input/output. It can be anything ranging from reading/writing local files to making an HTTP request to an API.
+
+I/O takes time and hence blocks other functions.
+
+Consider a scenario where
+
+
+**/
+
+
+
+
+
+
+/////////////////////////
+
+ const blog = new Blog(req.body);
+  blog.save()
+    .then(result => {
+      res.redirect('/blogs');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+
+/////////////////////////
+
+middleware Example
+1 Logger middleware to log the details of every request.
+2  Authentication check middleware for every request.
+3 middleware to parse  json data from the request
+4 Return 404 pages.
+
+
+using the next() method.
+
+we pass this method to the middleware . it avoid the browser hanging things.
+
+//////
+Morgon is a third party middleware for logger . show things inside the console. print method name, favicon icon
+app.use(morgan('dev'));
+
+//////////
+for getting the static file inside the browser we use the static middleware.
+we can inculde the static files inside view without mentioning the public folder inside the file.
+
+app.use(express.static('public'));
+
+
+////////////////////////////////////////////////
+
+// 404 page
+app.use((req, res) => {
+  res.status(404).render('404', { title: '404' });
+});
+
+
+
+///////////////////////////////////////////////
+
+
+
+
+monokai++ theme for vs code -- colourise the code..
+live server..
+material icon theme..
+
+///////////////////////////
+timestamp:true
+///////////////////////////////
+req.hostname
+req.path
+req.method
+req.url
+req.file
+req.files
+
+Tutorial 6 for page not found through express js
+
+
+https://lodash.com/docs/4.17.15#concat
+
+after installing the npm and nodejs in the sytem
+For creating the package.json file just enter npm init and then follow the step.
+
+package.json.lock--- keep track of different d.p.version in  the pro.
+
+
+https://developers.turing.com/
+https://www.npmjs.com/
+
+
+https://github.com/iamshaunjp/node-crash-course/tree/lesson-2
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  console.log('request made');
+});
+
+// localhost is the default value for 2nd argument
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000');
+});
+
+
+
+Port number are like doors into the computer.
+createServer() is the function for creating the server in node after importing the module .
+//////////////////////////////////////////
+In php server is maintained through the apache
+
+Ip address and Domain name
+ip adress is unique system addresss.
+Domain name may be internet adderss.
+
+Streams
+Start using the data before it has finished loading e.g video streaming ,audio streaming.
+
+
+/////////////////////////////////////////
+
+Async means -- IT takes sometime to do.
+
+Buffer Into the string-- use toString();
+when reading the file we use above method for  reading the file content
+
+
+Destructring
+
+var symbol with curlly braces followed by the equal sign.
+
+
+
+// Global Object
+
+// console.log(global);
+
+// global.setTimeout(() => {
+//   console.log('in the timeout');
+// }, 3000);
+
+setTimeout(() => {
+  console.log('in the timeout');
+  clearInterval(int);
+}, 3000);
+
+const int = setInterval(() => {
+  console.log('in the interval');
+}, 1000);
+
+
+console.log(__dirname);  geting the dir of current file.
+console.log(__filename); getting the dir name and along with file name.
+
+for running the file just type node filename
+//////////////////////////////////////
+In node global is the global obj
+console.log(global);
+
+/////////////////////
+setTimeout(()=>{alert(1000)},3000)
+Inside browserr window is the gloabal obj
+
+
+funtions,asyncs code working,promises etc.
+
+
+
+node js is written c++
+///////////////////////////////////////
+Aggregations operations process data records and return computed results. Aggregation operations group values from 
+multiple documents together, and can perform a variety of operations on the grouped
+ data to return a single result. In SQL count(*) and with group by is an equivalent of MongoDB aggregation.
+
+Basic syntax of aggregate() method is as follows −
+
+>db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
+
+//////////////////////////////////////////////////
+The sort() Method
+To sort documents in MongoDB, you need to use sort() method. The method accepts a document containing a list of fields
+ along with their sorting order. 
+To specify sorting order 1 and -1 are used. 1 is used for ascending order while -1 is used for descending order.
+
+Syntax
+The basic syntax of sort() method is as follows −
+
+>db.COLLECTION_NAME.find().sort({KEY:1})
+
+/////////////////////////////////////////
+Projections
+
+>db.COLLECTION_NAME.find({},{KEY:1})
+
+
+////////////////////////
+>db.COLLECTION_NAME.find().limit(NUMBER)
+
+>db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
+
+/////////////////////////
+mongodump
+//////////////////////////
+find()
+findById
+findByIdAndRemove
+
+
+//////////////////////////////////////////////////////
+getting data from the array object.
+user[0].password
+
+
+/////////////////////////////////////////////////////////////////////
+
+.exec()
+.then()
+.catch()
+//////////////
+.save()
+.then()
+.catch()
+
+//////////////////////////////////////////////////////////////////////
+
+const mongoose = require('mongoose');
+ _id:mongoose.Types.ObjectId(),
+
+
+https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+_id:mongoose.Schema.Types.ObjectId
+
+created status: 201
+updated: 201
+get data success status: 200
+
+
+findOne
+var check_module=userModule.findOne({username:username});
+
+findByIdAndDelete
+findByIdAndRemove
+
+
+
+./  --- same dir
+../ --- not same dir
+
+var userModule=require('../modules/user'); --- calling from the inside the foleder file
+
+
+var indexRouter = require('./routes/index');  --- calling from the app.js
+
+
+
+
+
+Example 2:This example converts the JS array to JSON Object using Object.assign() method.
+
+            "JSON Object = "+JSON.stringify(Object.assign({}, array));  
+
+https://www.codegrepper.com/code-examples/javascript/convert+json+to+array+in+js
+
+
+// JSON is a string .. For sending the data to the server.
+
+we convert array to json string  as js obj. we use json.Stringify()-- to covert to the json string.
+
+then back to the original shape -- we use json.parse()   for parsing the data.(json string to array or obj we use this method)
+
+
+
+
+
+ <% var d=JSON.parse(records.img); 
+                       d.forEach(function(data){ %>
+         
+                       <td><img src='../uploads/<%= data %>' style="width:80px; height:80px"></td>
+                         <% }) %>
+
+
+
+https://www.geeksforgeeks.org/javascript-convert-an-array-to-json/
+https://www.codegrepper.com/code-examples/javascript/convert+array+to+json+javascript
+
+Using the fat arrow symbol
+()=>{}
+
+function(){
+}
+
+findByIdAndDelete()
+findById
+
+Body Parser module
+Body-parser is the Node. js body parsing middleware. It is responsible for parsing the incoming request bodies in a
+ middleware before you handle it. Installation of body-parser module: You can visit the link to Install body-parser 
+ module.
+
+const bodyparser = require('body-parser')
+
+
+
+// Body-parser middleware
+app.use(bodyparser.urlencoded({extended:false}))
+app.use(bodyparser.json())
+
+
+Path module
+for the setting the view engine in the project.
+const path = require('path')
+// View Engine Setup
+app.set("views", path.join(__dirname))
+app.set("view engine", "ejs")
+res.send(); ---   for sending the text on to the browser..
+res.render() --  for displaying the view on the browser
+/////////////////////////////////////////////////////////////
+
+The JSON Web Token Header
+The JWT header is a Base64URL-encoded JSON object. It contains information describing the
+ type of the token and the signing algorithm being used, such as HMAC, SHA256, or RSA.
+
+For example:
+
+{
+  "typ": "JWT",
+  "alg": "HS256"
+}
+
+
+
+//////////////////////////////////////////
+
+Authentication is the process of verifying a user’s identity.
+
+A token is an object that can be used to authenticate a user to a server. 
+Tokens contain embedded user data that is used to identify and authenticate the user.
+
+//////////////////////////////////////////
+
+For generating the token.
+var token = jwt.sign({ userID: getId }, 'loginToken');
+      localStorage.setItem('userToken', token);
+      localStorage.setItem('loginUser', username);
+      res.redirect('/user');
+
+//////////////////
+
+db.createcollection('users')
+show collection
+use nodeauth -- if  not exist then it will create one
+
+db.users.insert({name:"john"})
+db.users.find();
+db.users.find().pretty();
+////////////////////////////////////////////////////////////////////////
+
+"body-parser":"~1.13.2",
+"cookie-parser":"~1.3.5",
+"debug":"~2.2.0",
+"jade":"~1.11.0",
+"morgan":"~1.6.1",
+"server-favicon":"~2.3.0",
+"mongodb":"*"
+"mongoose":"*"
+"connect-flash":"*"
+"express-message":"*"
+"express-validator":"*"
+"passport":"*"
+"passport-local":"*"
+"passport-http":"*"
+"multer":"*"
+
+npm install express-session
+Express application generator
+Use the application generator tool, express-generator, to quickly create an application skeleton.
+
+You can run the application generator with the npx command (available in Node.js 8.2.0).
+
+$ npx express-generator -g
+
+for creating the skleton for the project means dir
+after that run      
+express  --view=ejs pro_name
+
+now forrunning the project  just type
+DEBUG=pro_name:* npm start
+
+///
+jsonwebtoken and nodelocalstorage
+for generating and storing the token in the localstorage
+
+
+
+////////////////
