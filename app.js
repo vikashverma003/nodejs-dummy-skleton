@@ -5,6 +5,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var logger = require('morgan');
+const mongoose = require("mongoose");
+
+const dotenv = require("dotenv");
+dotenv.config();
+mongoose.connect(
+  process.env.MONGO_URL,
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, },
+  () => {
+    console.log("Connected to MongoDB");
+  }
+);
 
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
@@ -62,6 +73,10 @@ app.use(function(err, req, res, next) {
   });
   
 
+});
+
+app.listen(process.env.PORT, () => {
+  console.log("Backend server is running!");
 });
 
 module.exports = app;
